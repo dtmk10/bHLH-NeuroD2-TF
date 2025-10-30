@@ -1,0 +1,15 @@
+0: Bos_taurus.fasta
+1: Branchiostoma_belcheri.fasta
+2: Caenorhabditis_elegans.fasta
+3: Danio_rerio.fasta
+4: Drosophila_melanogaster.fasta
+5: Gallus_gallus.fasta
+6: Homo_sapiens.fasta
+7: Macaca_fascicularis.fasta
+8: Mesocricetus_auratus.fasta
+9: Mus_musculus.fasta
+10: Pan_troglodytes.fasta
+11: Rattus_norvegicus.fasta
+12: Takifugu_rubripes.fasta
+13: Xenopus_laevis.fasta
+14: Xenopus_tropicalis.fasta

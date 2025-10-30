@@ -1,0 +1,30 @@
+2025-10-30 17:42:36 : Started OrthoFinder version 3.1.0
+Command Line: /home/diego/miniconda3/envs/orthofinder_env/bin/orthofinder -f species_files/
+
+Search program: diamond
+MSA program: famsa
+Tree program: fasttree
+Scoring matrix: BLOSUM62
+Gap extend: 1
+Gap open: 11
+
+WorkingDirectory_Base: /home/diego/Documents/PGB-Workspace/bHLH-project/fasta_files/species_files/OrthoFinder/Results_Oct30_1/WorkingDirectory/
+
+Species used: 
+0: Bos_taurus.fasta
+1: Branchiostoma_belcheri.fasta
+2: Caenorhabditis_elegans.fasta
+3: Danio_rerio.fasta
+4: Drosophila_melanogaster.fasta
+5: Gallus_gallus.fasta
+6: Homo_sapiens.fasta
+7: Macaca_fascicularis.fasta
+8: Mesocricetus_auratus.fasta
+9: Mus_musculus.fasta
+10: Pan_troglodytes.fasta
+11: Rattus_norvegicus.fasta
+12: Takifugu_rubripes.fasta
+13: Xenopus_laevis.fasta
+14: Xenopus_tropicalis.fasta
+
+FN_Orthogroups: /home/diego/Documents/PGB-Workspace/bHLH-project/fasta_files/species_files/OrthoFinder/Results_Oct30_1/WorkingDirectory/clusters_OrthoFinder_I1.2.txt_id_pairs.txt

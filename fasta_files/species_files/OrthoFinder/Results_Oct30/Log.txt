@@ -1,0 +1,4 @@
+2025-10-30 17:41:17 : Started OrthoFinder version 2.5.5
+Command Line: /home/diego/miniconda3/envs/alg/bin/orthofinder -f species_files/
+
+WorkingDirectory_Base: /home/diego/Documents/PGB-Workspace/bHLH-project/fasta_files/species_files/OrthoFinder/Results_Oct30/WorkingDirectory/
