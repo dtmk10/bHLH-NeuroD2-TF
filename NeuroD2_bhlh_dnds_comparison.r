@@ -13,6 +13,7 @@ genome <- genome %>%
   filter(!is.na(omega) & omega < 10) %>%
   group_by(Ensembl.Gene.ID) %>%
   summarize(omega = mean(omega, na.rm=TRUE))
+  
 ## at the end when we don't see NeuroD2 in the dataset, it's because it is filtered out here
 ## the reason it is filtered out is because it has a ds of 0
 dnds <- dnds %>%

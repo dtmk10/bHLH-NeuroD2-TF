@@ -83,7 +83,7 @@ ggplot(box_df, aes(x = set, y = omega, fill = set)) +
   )) +
   labs(title = "dN/dS (W) — bHLH & bZIP TFs vs Mouse Genome",
        x = NULL, y = "W (dN/dS)") +
-  coord_cartesian(ylim = c(0, 5)) +                 # <- y max = 5
+  coord_cartesian(ylim = c(0, 3)) +                 # <- y max = 5
   theme_minimal(base_size = 12) +
   theme(legend.position = "none") +
   theme(plot.title = element_text(hjust = 0.5))

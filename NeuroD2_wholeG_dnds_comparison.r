@@ -1,6 +1,7 @@
 library(dplyr)
 library(ggplot2)
-
+## 0) the main difference between this file and the other dnds comparison is that we are not filtering for 
+#### the bhlh transcription factors only
 ## 1) load and clean data
 genome <- read.delim("~/documents/UPFClasses/PGB_Project/whole_genome_human_chimp.txt", sep="\t", header=TRUE)
 colnames(genome) <- make.names(colnames(genome))
