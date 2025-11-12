@@ -7,13 +7,13 @@
       // @JSON_VAR data
       var data = {
         "program": "Tomtom",
-        "version": "5.5.8",
-        "release": "Thu May 15 15:01:46 2025 -0700",
+        "version": "5.5.2",
+        "release": "Sun Jan 29 10:33:12 2023 -0800",
         "cmd": [
           "tomtom", "-verbosity", "1", "-oc", "IP_meme/streme_tomtom_out",
           "-min-overlap", "5", "-dist", "pearson", "-evalue", "-thresh", "1",
           "-no-ssc", "IP_meme/streme_out/streme.xml",
-          "JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt"
+          "JASPAR_db/jaspar_fixed.meme"
         ],
         "options": {
           "strands": "both",
@@ -103,16 +103,16 @@
             "name": "streme.xml",
             "loaded": 4,
             "excluded": 0,
-            "last_modified": "Tue Nov  4 12:51:56 2025"
+            "last_modified": "Mon Nov 10 12:20:44 2025"
           }
         ],
         "target_dbs": [
           {
-            "source": "JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt",
-            "name": "JASPAR2024_CORE_non-redundant_pfms_meme.txt",
-            "loaded": 2346,
+            "source": "JASPAR_db/jaspar_fixed.meme",
+            "name": "jaspar_fixed",
+            "loaded": 746,
             "excluded": 0,
-            "last_modified": "Mon Nov  6 13:13:27 2023"
+            "last_modified": "Mon Nov 10 11:58:57 2025"
           }
         ],
         "queries": [
@@ -202,12 +202,14 @@
         "targets": [
           {
             "db": 0,
-            "id": "MA0091.2",
+            "id": "MA0091.1",
             "alt": "TAL1::TCF3",
-            "len": 10,
+            "len": 12,
             "nsites": 44,
-            "url": "http://jaspar.genereg.net/matrix/MA0091.2",
+            "url": "http://jaspar.genereg.net/matrix/MA0091.1",
             "pwm": [
+              [0.295352, 0.318027, 0.181973, 0.204648], 
+              [0.204648, 0.227325, 0.454081, 0.113945], 
               [0.884921, 0.000566893, 0.0685943, 0.0459188], 
               [0.454081, 0.544785, 0.000566893, 0.000566893], 
               [0.000566893, 0.975624, 0.0232424, 0.000566893], 
@@ -221,12 +223,33 @@
             ]
           }, {
             "db": 0,
-            "id": "MA0517.2",
-            "alt": "STAT1::STAT2",
-            "len": 13,
-            "nsites": 620,
-            "url": "http://jaspar.genereg.net/matrix/MA0517.2",
+            "id": "MA0461.2",
+            "alt": "Atoh1",
+            "len": 10,
+            "nsites": 1194,
+            "url": "http://jaspar.genereg.net/matrix/MA0461.2",
             "pwm": [
+              [0.548551, 0.0904654, 0.311553, 0.0494308], 
+              [0.509228, 0.325213, 0.145092, 0.0204672], 
+              [0.0390147, 0.953516, 0.00744831, 2.09363e-05], 
+              [0.949987, 0.0185204, 0.0314703, 2.09363e-05], 
+              [0.0143057, 0.00842323, 0.114297, 0.862974], 
+              [0.932731, 0.0672273, 2.09363e-05, 2.09363e-05], 
+              [0.0208132, 0.00380162, 0.00474654, 0.970639], 
+              [0.00190578, 0.000963857, 0.967895, 0.0292365], 
+              [0.0330922, 0.227628, 0.365749, 0.373531], 
+              [0.0999346, 0.385625, 0.0983737, 0.416067]
+            ]
+          }, {
+            "db": 0,
+            "id": "MA0517.1",
+            "alt": "STAT1::STAT2",
+            "len": 15,
+            "nsites": 620,
+            "url": "http://jaspar.genereg.net/matrix/MA0517.1",
+            "pwm": [
+              [0.111312, 0.101637, 0.124214, 0.662836], 
+              [0.241936, 0.370948, 0.135502, 0.251613], 
               [0.693476, 0.0113285, 0.243549, 0.051645], 
               [0.00487854, 0.238712, 0.753145, 0.0032658], 
               [4.03161e-05, 0.0032658, 4.03161e-05, 0.996654], 
@@ -243,29 +266,107 @@
             ]
           }, {
             "db": 0,
-            "id": "MA0668.3",
-            "alt": "Neurod2",
+            "id": "MA0607.1",
+            "alt": "Bhlha15",
             "len": 8,
-            "nsites": 32957,
-            "url": "http://jaspar.genereg.net/matrix/MA0668.3",
+            "nsites": 1001,
+            "url": "http://jaspar.genereg.net/matrix/MA0607.1",
             "pwm": [
-              [0.627847, 0.179294, 0.177565, 0.0152937], 
-              [0.00649374, 0.980852, 0.00746474, 0.00518974], 
-              [0.985464, 0.00397575, 0.00640274, 0.00415775], 
-              [0.00876973, 0.0161427, 0.926175, 0.0489126], 
-              [0.892767, 0.0780115, 0.0214837, 0.00773774], 
-              [0.0228187, 0.0166287, 0.00949773, 0.951055], 
-              [0.00543174, 0.00458274, 0.9763, 0.0136847], 
-              [0.0177817, 0.0554666, 0.839, 0.0877515]
+              [0.142868, 0.570398, 0.28571, 0.00102387], 
+              [2.49725e-05, 0.999925, 2.49725e-05, 2.49725e-05], 
+              [0.999925, 2.49725e-05, 2.49725e-05, 2.49725e-05], 
+              [2.49725e-05, 2.49725e-05, 0.200205, 0.799745], 
+              [0.799745, 0.200205, 2.49725e-05, 2.49725e-05], 
+              [2.49725e-05, 2.49725e-05, 2.49725e-05, 0.999925], 
+              [2.49725e-05, 2.49725e-05, 0.999925, 2.49725e-05], 
+              [0.00102487, 0.231002, 0.15401, 0.613964]
             ]
           }, {
             "db": 0,
-            "id": "MA1109.2",
-            "alt": "NEUROD1",
-            "len": 8,
-            "nsites": 2282,
-            "url": "http://jaspar.genereg.net/matrix/MA1109.2",
+            "id": "MA0668.1",
+            "alt": "NEUROD2",
+            "len": 10,
+            "nsites": 1587,
+            "url": "http://jaspar.genereg.net/matrix/MA0668.1",
             "pwm": [
+              [0.380584, 0.074995, 0.484547, 0.059873], 
+              [0.320946, 0.532869, 0.14617, 1.5752e-05], 
+              [1.5752e-05, 0.943476, 0.0564922, 1.5752e-05], 
+              [0.815064, 1.5752e-05, 0.158198, 0.0267221], 
+              [1.5752e-05, 0.0895111, 1.5752e-05, 0.910457], 
+              [0.907335, 0.0686224, 0.0217414, 0.00230261], 
+              [1.5752e-05, 0.171284, 1.5752e-05, 0.828685], 
+              [1.5752e-05, 1.5752e-05, 0.934036, 0.0659326], 
+              [1.5752e-05, 0.229398, 0.433567, 0.337018], 
+              [0.131702, 0.373023, 0.0636537, 0.431621]
+            ]
+          }, {
+            "db": 0,
+            "id": "MA0678.1",
+            "alt": "OLIG2",
+            "len": 10,
+            "nsites": 2090,
+            "url": "http://jaspar.genereg.net/matrix/MA0678.1",
+            "pwm": [
+              [0.769831, 0.0430719, 0.135412, 0.0516845], 
+              [0.384827, 0.525737, 0.0803701, 0.00906653], 
+              [0.0438749, 0.95373, 0.00238285, 1.19612e-05], 
+              [0.954296, 0.0011979, 0.0314455, 0.0130603], 
+              [1.19612e-05, 1.19612e-05, 1.19612e-05, 0.999964], 
+              [0.973347, 0.0133203, 0.0109004, 0.00243185], 
+              [0.0117494, 0.0888837, 1.19612e-05, 0.899354], 
+              [0.00576169, 0.00173688, 0.925212, 0.0672887], 
+              [0.00200187, 0.197018, 0.430837, 0.370143], 
+              [0.0583862, 0.275489, 0.0228019, 0.643324]
+            ]
+          }, {
+            "db": 0,
+            "id": "MA0818.1",
+            "alt": "BHLHE22",
+            "len": 10,
+            "nsites": 739,
+            "url": "http://jaspar.genereg.net/matrix/MA0818.1",
+            "pwm": [
+              [0.703593, 0.0352121, 0.232749, 0.028447], 
+              [0.362749, 0.439513, 0.190027, 0.00771079], 
+              [0.0114393, 0.988493, 3.38249e-05, 3.38249e-05], 
+              [0.931808, 0.0107854, 0.043039, 0.0143689], 
+              [3.38249e-05, 0.00386431, 3.38249e-05, 0.996068], 
+              [0.984749, 0.0076088, 0.00382131, 0.00382131], 
+              [0.0190293, 0.0829246, 3.38249e-05, 0.898012], 
+              [3.38249e-05, 0.00383531, 0.988493, 0.0076378], 
+              [0.00771079, 0.370425, 0.236086, 0.385779], 
+              [0.043349, 0.305648, 0.0253014, 0.625701]
+            ]
+          }, {
+            "db": 0,
+            "id": "MA0827.1",
+            "alt": "OLIG3",
+            "len": 10,
+            "nsites": 2678,
+            "url": "http://jaspar.genereg.net/matrix/MA0827.1",
+            "pwm": [
+              [0.715069, 0.0761825, 0.15945, 0.0492985], 
+              [0.375758, 0.52371, 0.0977037, 0.00282723], 
+              [0.103743, 0.894836, 9.33498e-06, 0.00141128], 
+              [0.935947, 0.00489715, 0.0483945, 0.0107619], 
+              [9.33498e-06, 0.0129249, 0.035776, 0.95129], 
+              [0.943789, 0.0507714, 0.00543013, 9.33498e-06], 
+              [0.0254974, 0.101963, 0.000919301, 0.87162], 
+              [0.00182927, 0.00182927, 0.871224, 0.125119], 
+              [0.0107619, 0.254224, 0.347154, 0.38786], 
+              [0.0798254, 0.290359, 0.0530194, 0.576795]
+            ]
+          }, {
+            "db": 0,
+            "id": "MA1109.1",
+            "alt": "NEUROD1",
+            "len": 13,
+            "nsites": 2282,
+            "url": "http://jaspar.genereg.net/matrix/MA1109.1",
+            "pwm": [
+              [0.245837, 0.187996, 0.318139, 0.248028], 
+              [0.330846, 0.141548, 0.397014, 0.130592], 
               [0.564841, 0.198074, 0.216478, 0.0206061], 
               [0.00746063, 0.981563, 0.00570771, 0.00526972], 
               [0.982001, 0.00307782, 0.00702165, 0.00789861], 
@@ -273,88 +374,73 @@
               [0.891295, 0.0657401, 0.0337515, 0.00921255], 
               [0.0241119, 0.022359, 0.00833659, 0.945193], 
               [0.00570771, 0.00307782, 0.977619, 0.0135954], 
-              [0.0258648, 0.0407632, 0.859745, 0.0736277]
+              [0.0258648, 0.0407632, 0.859745, 0.0736277], 
+              [0.163457, 0.399204, 0.183176, 0.254163], 
+              [0.303241, 0.236636, 0.262488, 0.197636], 
+              [0.235759, 0.258983, 0.275196, 0.230062]
             ]
           }, {
             "db": 0,
-            "id": "MA1467.3",
-            "alt": "Atoh1",
-            "len": 7,
-            "nsites": 21477,
-            "url": "http://jaspar.genereg.net/matrix/MA1467.3",
+            "id": "MA1631.1",
+            "alt": "ASCL1(var.2)",
+            "len": 13,
+            "nsites": 34356,
+            "url": "http://jaspar.genereg.net/matrix/MA1631.1",
             "pwm": [
-              [0.0127121, 0.961817, 0.00968612, 0.0157851], 
-              [0.976716, 0.00791613, 0.0119671, 0.00340015], 
-              [0.00768413, 0.0197901, 0.88052, 0.0920057], 
-              [0.981466, 0.00535614, 0.00880112, 0.00437814], 
-              [0.00544914, 0.025703, 0.00461114, 0.964238], 
-              [0.0130381, 0.00740413, 0.970198, 0.00936012], 
-              [0.0539189, 0.100713, 0.733015, 0.112354]
+              [0.198888, 0.343608, 0.243655, 0.213849], 
+              [0.260566, 0.232798, 0.250349, 0.256287], 
+              [0.169868, 0.193678, 0.540691, 0.0957624], 
+              [0.00535671, 0.976887, 0.0093437, 0.0084127], 
+              [0.940591, 0.0163877, 0.0250327, 0.0179887], 
+              [0.00474471, 0.878127, 0.0934045, 0.0237227], 
+              [0.00570571, 0.97223, 0.0176687, 0.00439571], 
+              [0.0107117, 0.0215397, 0.0143217, 0.953427], 
+              [0.00730671, 0.0129537, 0.972492, 0.00724871], 
+              [0.0116147, 0.83956, 0.0791425, 0.0696825], 
+              [0.13069, 0.520519, 0.0863315, 0.262458], 
+              [0.206165, 0.307224, 0.260187, 0.226423], 
+              [0.173827, 0.349168, 0.243218, 0.233787]
             ]
           }, {
             "db": 0,
-            "id": "MA1638.2",
+            "id": "MA1638.1",
             "alt": "HAND2",
-            "len": 6,
+            "len": 10,
             "nsites": 30283,
-            "url": "http://jaspar.genereg.net/matrix/MA1638.2",
+            "url": "http://jaspar.genereg.net/matrix/MA1638.1",
             "pwm": [
+              [0.334709, 0.183733, 0.246442, 0.235115], 
+              [0.291781, 0.373081, 0.230955, 0.104184], 
               [0.000627823, 0.9927, 0.00435981, 0.00231282], 
               [0.964962, 0.0135398, 0.0213658, 0.000132825], 
               [0.000396824, 0.00138782, 0.995408, 0.00280782], 
               [0.996993, 0.000991822, 0.00125582, 0.000760823], 
               [0.000462824, 0.0751586, 0.00102482, 0.923354], 
-              [0.0077278, 0.00492081, 0.985733, 0.00161882]
+              [0.0077278, 0.00492081, 0.985733, 0.00161882], 
+              [0.172275, 0.253938, 0.293168, 0.280619], 
+              [0.20358, 0.337714, 0.201697, 0.257009]
             ]
           }, {
             "db": 0,
-            "id": "MA1642.2",
-            "alt": "NEUROG2",
-            "len": 7,
+            "id": "MA1642.1",
+            "alt": "NEUROG2(var.2)",
+            "len": 13,
             "nsites": 34391,
-            "url": "http://jaspar.genereg.net/matrix/MA1642.2",
+            "url": "http://jaspar.genereg.net/matrix/MA1642.1",
             "pwm": [
+              [0.252682, 0.213806, 0.314414, 0.219098], 
+              [0.263063, 0.198976, 0.29435, 0.24361], 
+              [0.351516, 0.188043, 0.323166, 0.137274], 
+              [0.478264, 0.237097, 0.233753, 0.0508856], 
               [0.0080847, 0.975806, 0.0092187, 0.00689171], 
               [0.980487, 0.00613571, 0.0087527, 0.00462371], 
               [0.0116317, 0.0230587, 0.883718, 0.0815915], 
               [0.952166, 0.0276826, 0.0121547, 0.0079967], 
               [0.0188717, 0.0262867, 0.0093927, 0.945449], 
               [0.0081427, 0.00596171, 0.971822, 0.0140737], 
-              [0.0442856, 0.0862435, 0.726875, 0.142595]
-            ]
-          }, {
-            "db": 0,
-            "id": "MA2163.1",
-            "alt": "cnd-1",
-            "len": 8,
-            "nsites": 661,
-            "url": "http://jaspar.genereg.net/matrix/MA2163.1",
-            "pwm": [
-              [0.0136518, 0.933331, 0.031803, 0.0212146], 
-              [0.954507, 0.0136518, 0.0181891, 0.0136518], 
-              [0.0166763, 0.0242402, 0.909128, 0.0499543], 
-              [0.854675, 0.0620554, 0.0348286, 0.0484415], 
-              [0.0242402, 0.0363413, 0.0197018, 0.919717], 
-              [0.0227274, 0.0060879, 0.946945, 0.0242402], 
-              [0.00760067, 0.0242402, 0.903078, 0.065081], 
-              [0.0696193, 0.149788, 0.084745, 0.695848]
-            ]
-          }, {
-            "db": 0,
-            "id": "MA2170.1",
-            "alt": "lin-32",
-            "len": 8,
-            "nsites": 489,
-            "url": "http://jaspar.genereg.net/matrix/MA2170.1",
-            "pwm": [
-              [0.721785, 0.0818344, 0.186107, 0.010274], 
-              [0.00822944, 0.946688, 0.0307198, 0.0143632], 
-              [0.954866, 0.010274, 0.0225415, 0.0123186], 
-              [0.00414028, 0.0143632, 0.930331, 0.0511657], 
-              [0.582754, 0.100235, 0.306736, 0.010274], 
-              [0.0143632, 0.0225415, 0.0164078, 0.946688], 
-              [0.0020957, 0.0020957, 0.991668, 0.00414028], 
-              [0.0184524, 0.0450319, 0.635913, 0.300603]
+              [0.0442856, 0.0862435, 0.726875, 0.142595], 
+              [0.193801, 0.303597, 0.220436, 0.282167], 
+              [0.275188, 0.262685, 0.253235, 0.208892]
             ]
           }
         ],
@@ -363,82 +449,103 @@
             "idx": 0,
             "matches": [
               {
-                "idx": 4,
+                "idx": 11,
                 "rc": true,
-                "off": 0,
-                "pv": "1.43e-06",
-                "ev": "3.35e-03",
-                "qv": "3.33e-03"
-              }, {
-                "idx": 6,
-                "rc": true,
-                "off": 0,
-                "pv": "1.43e-06",
-                "ev": "3.35e-03",
-                "qv": "3.33e-03"
-              }, {
-                "idx": 3,
-                "rc": true,
-                "off": 0,
-                "pv": "7.94e-06",
-                "ev": "1.86e-02",
-                "qv": "1.23e-02"
-              }, {
-                "idx": 2,
-                "rc": true,
-                "off": 0,
-                "pv": "1.35e-05",
-                "ev": "3.17e-02",
-                "qv": "1.57e-02"
+                "off": 2,
+                "pv": "1.91e-07",
+                "ev": "1.42e-04",
+                "qv": "2.75e-04"
               }, {
                 "idx": 8,
                 "rc": true,
-                "off": 0,
-                "pv": "5.67e-05",
-                "ev": "1.33e-01",
-                "qv": "5.28e-02"
+                "off": 3,
+                "pv": "1.53e-05",
+                "ev": "1.14e-02",
+                "qv": "1.10e-02"
               }, {
-                "idx": 7,
+                "idx": 10,
                 "rc": true,
                 "off": 1,
-                "pv": "9.08e-05",
-                "ev": "2.13e-01",
-                "qv": "7.05e-02"
+                "pv": "8.26e-05",
+                "ev": "6.16e-02",
+                "qv": "3.97e-02"
               }, {
-                "idx": 5,
-                "rc": true,
-                "off": -1,
-                "pv": "1.47e-04",
-                "ev": "3.44e-01",
-                "qv": "9.77e-02"
+                "idx": 3,
+                "rc": false,
+                "off": 0,
+                "pv": "3.69e-04",
+                "ev": "2.75e-01",
+                "qv": "1.00e-01"
+              }, {
+                "idx": 6,
+                "rc": false,
+                "off": 1,
+                "pv": "4.05e-04",
+                "ev": "3.02e-01",
+                "qv": "1.00e-01"
+              }, {
+                "idx": 7,
+                "rc": false,
+                "off": 1,
+                "pv": "4.70e-04",
+                "ev": "3.51e-01",
+                "qv": "1.00e-01"
               }, {
                 "idx": 0,
                 "rc": false,
+                "off": 3,
+                "pv": "4.86e-04",
+                "ev": "3.62e-01",
+                "qv": "1.00e-01"
+              }, {
+                "idx": 4,
+                "rc": false,
                 "off": 1,
-                "pv": "1.83e-04",
-                "ev": "4.28e-01",
-                "qv": "1.06e-01"
+                "pv": "7.48e-04",
+                "ev": "5.58e-01",
+                "qv": "1.20e-01"
+              }, {
+                "idx": 5,
+                "rc": false,
+                "off": 1,
+                "pv": "7.48e-04",
+                "ev": "5.58e-01",
+                "qv": "1.20e-01"
+              }, {
+                "idx": 9,
+                "rc": false,
+                "off": 2,
+                "pv": "9.55e-04",
+                "ev": "7.13e-01",
+                "qv": "1.38e-01"
+              }, {
+                "idx": 1,
+                "rc": true,
+                "off": 1,
+                "pv": "1.29e-03",
+                "ev": "9.62e-01",
+                "qv": "1.38e-01"
               }
             ]
           }, {
             "idx": 1,
             "matches": [
               {
-                "idx": 1,
+                "idx": 2,
                 "rc": true,
                 "off": 0,
-                "pv": "1.77e-04",
-                "ev": "4.14e-01",
-                "qv": "8.29e-01"
+                "pv": "2.01e-04",
+                "ev": "1.50e-01",
+                "qv": "3.00e-01"
               }
             ]
           }
         ],
         "runtime": {
           "host": "diego-HP-Laptop-14s-dq2xxx",
-          "when": "Tue Nov  4 12:52:01 2025",
-          "cycles": 4318835,
-          "seconds": 4.319
+          "when": "Mon Nov 10 12:20:46 2025",
+          "cycles": 1696913,
+          "seconds": 1.697
         }
       };
     </script>
@@ -1207,76 +1314,6 @@ function get_shared_doc_text(doc_type, extra, extra2) {
   if (extra == undefined) {extra = ""};
   if (extra2 == undefined) {extra2 = ""};
   switch (doc_type) {
-    case 'fasta-coordinates-name':
-      return(`
-        The sequence IDs in the FASTA header lines are used as the source of sequence names. 
-        The sequence ID is the string following the initial '>' up to the first white space character. 
-        If the sequence ID is in an accepted <a href="` + site_url + `/doc/fasta-coordinates-format.html">FASTA Coordinates Format</a>
-        (e.g., UCSC or Galaxy format), and you did NOT specify the <code>` + extra + `-no-pgc</code> option, 
-        then the coordinates are removed from the sequence ID to create the sequence name.
-      `);
-    case 'fasta-coordinates-brief':
-      return(`
-        The sequence IDs in the FASTA header lines are used as the source of sequence names. 
-        The sequence ID is the string following the initial '>' up to the first white space character. 
-        If the sequence ID is in an accepted <a href="` + site_url + `/doc/fasta-coordinates-format.html">FASTA Coordinates Format</a>
-        (e.g., UCSC or Galaxy format), and you did NOT specify the <code>` + extra + `-no-pgc</code> option, 
-        then the coordinates are removed from the sequence ID to create the sequence name,
-	and the starting coordinate given in the sequence ID will be used as the 
-        coordinate of the first position of the sequence. 
-        Otherwise, the coordinate of the first position of the sequence is taken as 1 and the entire
-	sequence ID is used as the sequence name. 
-      `);
-    case 'fasta-coordinates':
-      return(`
-	For sequence coordinates embedded in FASTA sequence headers to be parsed 
-        correctly by MEME Suite programs, the sequence ID in the FASTA header should have one of the two
-	following formats:
-
-	<h4>UCSC Format</h4>
-	<div style='margin: 5px 0'>
-	  &gt;<span class='pdat'>sequence name</span>:<span class='pdat'
-	  >starting position</span>-<span class='pdat'>ending position</span>
-	</div>
-	where
-	<ul style='margin-top: 0; margin-bottom: 5px'>
-	  <li><span class='pdat'>sequence name</span> is the name of the genomic sequence,</li>
-	  <li><span class='pdat'>starting position</span> is the genomic position of the first base and</li>
-	  <li><span class='pdat'>ending position</span> is the genomic position of the final base.</li>
-	</ul>
-        <b>Example:</b> <span class="pdata">chr1:156887119-156887619</span>
-
-	<h4>Galaxy Format</h4>
-	<div style='margin: 5px 0'>
-	  &gt;<span class='pdat'>assembly name</span>_<span class='pdat'
-	  >sequence name</span>_<span class='pdat'
-	  >starting position</span>_<span class='pdat'
-	  >ending position</span>_<span class='pdat'
-	  >strand</span>
-	</div>
-	where
-	<ul style='margin-top: 0; margin-bottom: 5px'>
-	  <li><span class='pdat'>assembly name</span> is the name of the genomic assembly,</li>
-	  <li><span class='pdat'>sequence name</span> is the name of the genomic sequence,</li>
-	  <li><span class='pdat'>starting position</span> is the genomic position of the first base and</li>
-	  <li><span class='pdat'>ending position</span> is the genomic position of the final base.</li>
-	</ul>
-        <b>Example:</b> <span class="pdata">>mm9_chr18_75759530_7575972_-</span>
-
-	<p>	
-	For both formats, the following rules also apply:
-        <ul>
-	  <li>The the coordinates are 1-start, fully-closed.  This means
-	  that the first base of the chromosome is position "1", and the bases at the
-	  first and last positions of the given range are included.</li>
-	  <li>The <span class='pdat'>sequence name</span> may not contain any white space.</li>
-	  <li>The <span class='pdat'>assembly name</span> is not optional.</li>
-	  <li>The <span class='pdat'>strand</span> is ignored.</li>
-	  <li>When no valid genomic coordinates are found in a FASTA sequence header, the starting
-	  position of the sequence is taken to be position 1.</li>
-        </ul>
-        </p>
-      `);
     case 'motif-db':
       return(`
 	The name of ` + extra2 + ` a file of motifs ("motif database file") that contains ` + extra + `
@@ -1352,10 +1389,20 @@ function get_shared_doc_text(doc_type, extra, extra2) {
       return(`
         The identifier of the sequence (from the FASTA sequence header line)` + extra + `
       `);
+    case 'sequence-name':
+      return(`
+	` + extra + `name of the sequence extracted from the sequence identifier (in the FASTA sequence header line).<br>
+	When you use the <code>--parse-genomic--coord</code> option, the sequence name ends at the
+	first colon ':' (if any) present in the sequence\'s FASTA identifier.  Typically this is the
+	chromosome or contig name.  With the <code>--parse-genomic--coord</code> option,
+	the start and stop positions are in 0-based coordinates relative to the sequence start given 
+	in the FASTA sequence identifier (just after the sequence name).</td> </tr>
+      `);
     case 'sequence-desc':
       return(`
         The description appearing after the identifier of the sequence in the FASTA header line.
       `);
+    case 'sequence-name':
     case 'alph-name':
       return(`
 	The name of the alphabet symbol.
@@ -1363,14 +1410,6 @@ function get_shared_doc_text(doc_type, extra, extra2) {
     case 'alph-bg':
       return(`
 	The frequency of the alphabet symbol as defined by the background model.
-      `);
-    case 'match-start':
-      return(`
-	The start position of the ` + extra + `.
-      `);
-    case 'match-stop':
-      return(`
-	The end position of the ` + extra + `.
       `);
     case 'match-start-seq':
       return(`
@@ -1387,6 +1426,12 @@ function get_shared_doc_text(doc_type, extra, extra2) {
     case 'match-stop-genomic':
       return(`
 	The end position of the ` + extra + `; genomic coordinates.
+      `);
+    case 'parse-genomic-coord':
+      return(`
+	` + extra + ` was run with the <code>--parse-genomic-coord</code> option
+	and has split the sequence identifier into sequence name, sequence start and sequence end 
+	in genomic coordinates.
       `);
     case 'motif-consensus':
       return(`

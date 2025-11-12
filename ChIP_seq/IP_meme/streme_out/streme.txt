@@ -1,7 +1,7 @@
 ********************************************************************************
 STREME - Sensitive, Thorough, Rapid, Enriched Motif Elicitation
 ********************************************************************************
-MEME version 5.5.8 (Release date: Thu May 15 15:01:46 2025 -0700)
+MEME version 5.5.2 (Release date: Sun Jan 29 10:33:12 2023 -0800)
 
 For further information on how to interpret these results please access https://meme-suite.org/meme.
 To get a copy of the MEME Suite software please access https://meme-suite.org.
@@ -87,9 +87,9 @@ letter-probability matrix: alength= 4 w= 9 nsites= 57 E= 3.3e+000
 ********************************************************************************
 Stopped because 3 consecutive motifs exceeded the p-value threshold (0.05).
 ********************************************************************************
-COMMAND:	streme --verbosity 1 --oc IP_meme/streme_out -dna --seed 0 --p IP_meme/seqs-centered --minw 6 --maxw 15 --order 2
+COMMAND:	streme --verbosity 1 --oc IP_meme/streme_out -dna --p IP_meme/seqs-centered --minw 6 --maxw 15 --order 2
 ********************************************************************************
 CPU:		diego-HP-Laptop-14s-dq2xxx
 ********************************************************************************
-FINALTIME:	3.52 seconds
+FINALTIME:	3.65 seconds
 ********************************************************************************

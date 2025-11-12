@@ -56,19 +56,24 @@ plotDistToTSS(peakAnno, title = "Dist to TSS")
 
 
 
-
 ## ==================
 # FUNCTIONAL ENRICHMENT ANALYSIS using reactomepa
 ## ==================
 
-library(org.Mm.eg.db)
-mmdb <- org.Mm.eg.db
 
+gene <- seq2gene(peaksResized, tssRegion = c(-1000, 1000), flankDistance = 3000, TxDb=txdb)
+pathway2 <- enrichPathway(gene, organism = "mouse")
 
-pathway1 <- enrichPathway(as.character(as.data.frame(peakAnno)$geneId), organism = "mouse")
+length(pathway2@gene)
+sum(pathway2@result$p.adjust < 0.05)
+gene_list_adjusted <<- "x"
+for(i in 1:length(pathway2@gene)){
+  if(pathway2@result$p.adjust[i] < 0.05){
+    gene_list_adjusted <<- paste(gene_list_adjusted, pathway2@gene[i], sep = "\n")
+  }
+}
+write(gene_list_adjusted, file = "geneTable.txt", append = FALSE)
 
-sum(pathway1@result$p.adjust < 0.05)
-
-dotplot(pathway1)
-
+dotplot(pathway2)
+barplot(pathway2)
 

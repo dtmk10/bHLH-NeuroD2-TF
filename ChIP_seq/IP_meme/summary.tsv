@@ -1,9 +1,9 @@
 MOTIF_INDEX	MOTIF_SOURCE	MOTIF_ID	ALT_ID	CONSENSUS	WIDTH	SITES	E-VALUE	E-VALUE_SOURCE	MOST_SIMILAR_MOTIF_SOURCE	MOST_SIMILAR_MOTIF	URL
-1	MEME	VDRVCAGATGG	MEME-1	VDRVCAGATGG	11	747	1.7e-661	MEME	JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt	MA1109.2 (NEUROD1)	http://jaspar.genereg.net/matrix/MA1109.2
-2	MEME	CCWKCTGY	MEME-2	CCWKCTGY	8	522	5.2e-201	MEME	JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt	MA1100.3 (ASCL1)	http://jaspar.genereg.net/matrix/MA1100.3
-3	MEME	TGTGTGTGTGTGTGT	MEME-3	TGTGTGTGTGTGTGT	15	48	1.1e-117	MEME	JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt	MA2107.1 (cg)	http://jaspar.genereg.net/matrix/MA2107.1
-4	STREME	1-CCATCTGBTYY	STREME-1	CCATCTGBTYY	11	494	2.1e-012	STREME	JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt	MA1467.3 (Atoh1)	http://jaspar.genereg.net/matrix/MA1467.3
+1	MEME	VDRVCAGATGG	MEME-1	VDRVCAGATGG	11	747	1.7e-661	MEME	JASPAR_db/jaspar_fixed.meme	MA1642.1 (NEUROG2(var.2))	http://jaspar.genereg.net/matrix/MA1642.1
+2	MEME	CCWKCTGY	MEME-2	CCWKCTGY	8	522	5.2e-201	MEME	JASPAR_db/jaspar_fixed.meme	MA1635.1 (BHLHE22(var.2))	http://jaspar.genereg.net/matrix/MA1635.1
+3	MEME	TGTGTGTGTGTGTGT	MEME-3	TGTGTGTGTGTGTGT	15	48	1.1e-117	MEME	JASPAR_db/jaspar_fixed.meme	MA1107.2 (KLF9)	http://jaspar.genereg.net/matrix/MA1107.2
+4	STREME	1-CCATCTGBTYY	STREME-1	CCATCTGBTYY	11	494	2.1e-012	STREME	JASPAR_db/jaspar_fixed.meme	MA1642.1 (NEUROG2(var.2))	http://jaspar.genereg.net/matrix/MA1642.1
 
-# MEME-ChIP (Motif Analysis of Large Nucleotide Datasets): Version 5.5.8 released on Thu May 15 15:01:46 2025 -0700
+# MEME-ChIP (Motif Analysis of Large Nucleotide Datasets): Version 5.5.2 released on Sun Jan 29 10:33:12 2023 -0800
 # The format of this file is described at https://meme-suite.org/meme//doc/meme-chip-output-format.html
-# meme-chip -oc IP_meme --db JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt IP_peaks.resized.bed.fa
+# meme-chip -oc IP_meme --db JASPAR_db/jaspar_fixed.meme IP_peaks.resized.bed.fa

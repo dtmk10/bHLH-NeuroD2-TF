@@ -7,13 +7,12 @@
       // @JSON_VAR data
       var data = {
         "filter_thresh": "0.05",
-        "version": "5.5.8",
-        "revision": "503cf781ac32d3f1ee52fc9d492e5f033fe7b6a7",
-        "release": "Thu May 15 15:01:46 2025 -0700",
+        "version": "5.5.2",
+        "revision": "3d275f62a8ef9cdf5704816f061ff55251222cc9",
+        "release": "Sun Jan 29 10:33:12 2023 -0800",
         "cmd": [
           "meme-chip", "-oc", "IP_meme", "--db",
-          "JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt",
-          "IP_peaks.resized.bed.fa"
+          "JASPAR_db/jaspar_fixed.meme", "IP_peaks.resized.bed.fa"
         ],
         "programs": [
           {
@@ -21,21 +20,21 @@
             "cmd": "getsize IP_meme/IP_peaks.resized.bed.fa 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.008521,
+            "time": 0.006598,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < IP_meme/IP_peaks.resized.bed.fa 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.035274,
+            "time": 0.037081,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < IP_meme/IP_peaks.resized.bed.fa 1> IP_meme/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.043557,
+            "time": 0.041594,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -47,7 +46,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 IP_meme/IP_peaks.resized.bed.fa IP_meme/background",
             "status": 0,
             "oot": false,
-            "time": 0.007702,
+            "time": 0.005225,
             "outputs": [
               {
                 "name": "Background",
@@ -56,10 +55,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme IP_meme/seqs-centered -oc IP_meme/meme_out -mod zoops -nmotifs 3 -minw 6 -maxw 15 -bfile IP_meme/background -dna -seed 0 -revcomp -nostatus",
+            "cmd": "meme IP_meme/seqs-centered -oc IP_meme/meme_out -mod zoops -nmotifs 3 -minw 6 -maxw 15 -bfile IP_meme/background -dna -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 481.597314,
+            "time": 470.424618,
             "messages_file": "meme_msgs.txt",
             "outputs": [
               {
@@ -75,10 +74,10 @@
             ]
           }, {
             "name": "streme",
-            "cmd": "streme --verbosity 1 --oc IP_meme/streme_out -dna --seed 0 --p IP_meme/seqs-centered --minw 6 --maxw 15 --order 2",
+            "cmd": "streme --verbosity 1 --oc IP_meme/streme_out -dna --p IP_meme/seqs-centered --minw 6 --maxw 15 --order 2",
             "status": 0,
             "oot": false,
-            "time": 3.531947,
+            "time": 3.653107,
             "outputs": [
               {
                 "name": "STREME HTML",
@@ -89,20 +88,14 @@
               }, {
                 "name": "STREME XML",
                 "file": "streme_out/streme.xml"
-              }, {
-                "name": "STREME SEQUENCES",
-                "file": "streme_out/sequences.tsv"
-              }, {
-                "name": "STREME SITES",
-                "file": "streme_out/sites.tsv"
               }
             ]
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 450 -verbosity 1 -oc IP_meme/centrimo_out -bfile IP_meme/background IP_meme/IP_peaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt",
+            "cmd": "centrimo -seqlen 450 -verbosity 1 -oc IP_meme/centrimo_out -bfile IP_meme/background IP_meme/IP_peaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml JASPAR_db/jaspar_fixed.meme",
             "status": 256,
             "oot": false,
-            "time": 0.403649,
+            "time": 0.263018,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -112,10 +105,10 @@
             ]
           }, {
             "name": "meme_tomtom",
-            "cmd": "tomtom -verbosity 1 -oc IP_meme/meme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc IP_meme/meme_out/meme.xml JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt",
+            "cmd": "tomtom -verbosity 1 -oc IP_meme/meme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc IP_meme/meme_out/meme.xml JASPAR_db/jaspar_fixed.meme",
             "status": 0,
             "oot": false,
-            "time": 4.13524,
+            "time": 1.723684,
             "outputs": [
               {
                 "name": "Tomtom HTML",
@@ -130,10 +123,10 @@
             ]
           }, {
             "name": "streme_tomtom",
-            "cmd": "tomtom -verbosity 1 -oc IP_meme/streme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc IP_meme/streme_out/streme.xml JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt",
+            "cmd": "tomtom -verbosity 1 -oc IP_meme/streme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc IP_meme/streme_out/streme.xml JASPAR_db/jaspar_fixed.meme",
             "status": 0,
             "oot": false,
-            "time": 4.382979,
+            "time": 1.758414,
             "outputs": [
               {
                 "name": "Tomtom HTML",
@@ -151,7 +144,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 IP_meme/combined.meme IP_meme/combined.meme 1> IP_meme/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.020761,
+            "time": 0.022024,
             "outputs": [
               {
                 "name": "Motif Alignment",
@@ -163,7 +156,7 @@
             "cmd": "spamo -verbosity 1 -oc IP_meme/spamo_out_1 -bgfile IP_meme/background -keepprimary -primary VDRVCAGATGG IP_meme/IP_peaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.857472,
+            "time": 0.881944,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -176,7 +169,7 @@
             "cmd": "spamo -verbosity 1 -oc IP_meme/spamo_out_1 -bgfile IP_meme/background -keepprimary -primary TGTGTGTGTGTGTGT IP_meme/IP_peaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.348029,
+            "time": 0.33616,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -186,10 +179,10 @@
             ]
           }, {
             "name": "fimo1",
-            "cmd": "fimo --verbosity 1 --oc IP_meme/fimo_out_1 --bgfile IP_meme/background --motif VDRVCAGATGG IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa",
+            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc IP_meme/fimo_out_1 --bgfile IP_meme/background --motif VDRVCAGATGG IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa",
             "status": 0,
             "oot": false,
-            "time": 0.212848,
+            "time": 0.230065,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -204,10 +197,10 @@
             ]
           }, {
             "name": "fimo2",
-            "cmd": "fimo --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa",
+            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa",
             "status": 0,
             "oot": false,
-            "time": 0.217703,
+            "time": 0.223273,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -307,7 +300,7 @@
         },
         "motif_dbs": [
           {
-            "source": "JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt",
+            "source": "JASPAR_db/jaspar_fixed.meme",
             "count": 0
           }
         ],
@@ -343,52 +336,130 @@
             "tomtom_matches": [
               {
                 "db": 0,
-                "idx": "11",
-                "id": "MA1109.2",
-                "alt": "NEUROD1",
-                "url": "http://jaspar.genereg.net/matrix/MA1109.2"
+                "idx": "31",
+                "id": "MA1642.1",
+                "alt": "NEUROG2(var.2)",
+                "url": "http://jaspar.genereg.net/matrix/MA1642.1"
               }, {
                 "db": 0,
-                "idx": "7",
-                "id": "MA0668.3",
-                "alt": "Neurod2",
-                "url": "http://jaspar.genereg.net/matrix/MA0668.3"
+                "idx": "18",
+                "id": "MA1109.1",
+                "alt": "NEUROD1",
+                "url": "http://jaspar.genereg.net/matrix/MA1109.1"
+              }, {
+                "db": 0,
+                "idx": "29",
+                "id": "MA1638.1",
+                "alt": "HAND2",
+                "url": "http://jaspar.genereg.net/matrix/MA1638.1"
+              }, {
+                "db": 0,
+                "idx": "8",
+                "id": "MA0607.1",
+                "alt": "Bhlha15",
+                "url": "http://jaspar.genereg.net/matrix/MA0607.1"
+              }, {
+                "db": 0,
+                "idx": "20",
+                "id": "MA1472.1",
+                "alt": "BHLHA15(var.2)",
+                "url": "http://jaspar.genereg.net/matrix/MA1472.1"
               }, {
                 "db": 0,
                 "idx": "12",
-                "id": "MA1467.3",
-                "alt": "Atoh1",
-                "url": "http://jaspar.genereg.net/matrix/MA1467.3"
+                "id": "MA0818.1",
+                "alt": "BHLHE22",
+                "url": "http://jaspar.genereg.net/matrix/MA0818.1"
               }, {
                 "db": 0,
-                "idx": "16",
-                "id": "MA1642.2",
-                "alt": "NEUROG2",
-                "url": "http://jaspar.genereg.net/matrix/MA1642.2"
+                "idx": "2",
+                "id": "MA0091.1",
+                "alt": "TAL1::TCF3",
+                "url": "http://jaspar.genereg.net/matrix/MA0091.1"
               }, {
                 "db": 0,
-                "idx": "22",
-                "id": "MA2170.1",
-                "alt": "lin-32",
-                "url": "http://jaspar.genereg.net/matrix/MA2170.1"
+                "idx": "5",
+                "id": "MA0499.2",
+                "alt": "MYOD1",
+                "url": "http://jaspar.genereg.net/matrix/MA0499.2"
+              }, {
+                "db": 0,
+                "idx": "13",
+                "id": "MA0827.1",
+                "alt": "OLIG3",
+                "url": "http://jaspar.genereg.net/matrix/MA0827.1"
+              }, {
+                "db": 0,
+                "idx": "27",
+                "id": "MA1631.1",
+                "alt": "ASCL1(var.2)",
+                "url": "http://jaspar.genereg.net/matrix/MA1631.1"
+              }, {
+                "db": 0,
+                "idx": "9",
+                "id": "MA0668.1",
+                "alt": "NEUROD2",
+                "url": "http://jaspar.genereg.net/matrix/MA0668.1"
               }, {
                 "db": 0,
                 "idx": "21",
-                "id": "MA2163.1",
-                "alt": "cnd-1",
-                "url": "http://jaspar.genereg.net/matrix/MA2163.1"
+                "id": "MA1485.1",
+                "alt": "FERD3L",
+                "url": "http://jaspar.genereg.net/matrix/MA1485.1"
               }, {
                 "db": 0,
-                "idx": "15",
-                "id": "MA1638.2",
-                "alt": "HAND2",
-                "url": "http://jaspar.genereg.net/matrix/MA1638.2"
+                "idx": "10",
+                "id": "MA0678.1",
+                "alt": "OLIG2",
+                "url": "http://jaspar.genereg.net/matrix/MA0678.1"
               }, {
                 "db": 0,
-                "idx": "1",
-                "id": "MA0091.2",
-                "alt": "TAL1::TCF3",
-                "url": "http://jaspar.genereg.net/matrix/MA0091.2"
+                "idx": "4",
+                "id": "MA0461.2",
+                "alt": "Atoh1",
+                "url": "http://jaspar.genereg.net/matrix/MA0461.2"
+              }, {
+                "db": 0,
+                "idx": "24",
+                "id": "MA1618.1",
+                "alt": "Ptf1a",
+                "url": "http://jaspar.genereg.net/matrix/MA1618.1"
+              }, {
+                "db": 0,
+                "idx": "17",
+                "id": "MA1108.2",
+                "alt": "MXI1",
+                "url": "http://jaspar.genereg.net/matrix/MA1108.2"
+              }, {
+                "db": 0,
+                "idx": "14",
+                "id": "MA0830.2",
+                "alt": "TCF4",
+                "url": "http://jaspar.genereg.net/matrix/MA0830.2"
+              }, {
+                "db": 0,
+                "idx": "7",
+                "id": "MA0521.1",
+                "alt": "Tcf12",
+                "url": "http://jaspar.genereg.net/matrix/MA0521.1"
+              }, {
+                "db": 0,
+                "idx": "22",
+                "id": "MA1524.1",
+                "alt": "MSGN1",
+                "url": "http://jaspar.genereg.net/matrix/MA1524.1"
+              }, {
+                "db": 0,
+                "idx": "30",
+                "id": "MA1641.1",
+                "alt": "MYF5",
+                "url": "http://jaspar.genereg.net/matrix/MA1641.1"
+              }, {
+                "db": 0,
+                "idx": "19",
+                "id": "MA1468.1",
+                "alt": "ATOH7",
+                "url": "http://jaspar.genereg.net/matrix/MA1468.1"
               }
             ],
             "fimo_gff": "fimo_out_1/fimo.gff"
@@ -416,136 +487,94 @@
             "tomtom_matches": [
               {
                 "db": 0,
-                "idx": "10",
-                "id": "MA1100.3",
-                "alt": "ASCL1",
-                "url": "http://jaspar.genereg.net/matrix/MA1100.3"
-              }, {
-                "db": 0,
-                "idx": "8",
-                "id": "MA0697.3",
-                "alt": "Zic3",
-                "url": "http://jaspar.genereg.net/matrix/MA0697.3"
-              }, {
-                "db": 0,
-                "idx": "11",
-                "id": "MA1109.2",
-                "alt": "NEUROD1",
-                "url": "http://jaspar.genereg.net/matrix/MA1109.2"
-              }, {
-                "db": 0,
-                "idx": "17",
-                "id": "MA1815.2",
-                "alt": "GRF4",
-                "url": "http://jaspar.genereg.net/matrix/MA1815.2"
-              }, {
-                "db": 0,
-                "idx": "13",
-                "id": "MA1628.2",
-                "alt": "Zic1::Zic2",
-                "url": "http://jaspar.genereg.net/matrix/MA1628.2"
-              }, {
-                "db": 0,
-                "idx": "7",
-                "id": "MA0668.3",
-                "alt": "Neurod2",
-                "url": "http://jaspar.genereg.net/matrix/MA0668.3"
-              }, {
-                "db": 0,
-                "idx": "3",
-                "id": "MA0500.3",
-                "alt": "MYOG",
-                "url": "http://jaspar.genereg.net/matrix/MA0500.3"
+                "idx": "28",
+                "id": "MA1635.1",
+                "alt": "BHLHE22(var.2)",
+                "url": "http://jaspar.genereg.net/matrix/MA1635.1"
               }, {
                 "db": 0,
                 "idx": "25",
-                "id": "MA2295.1",
-                "alt": "ac",
-                "url": "http://jaspar.genereg.net/matrix/MA2295.1"
+                "id": "MA1628.1",
+                "alt": "Zic1::Zic2",
+                "url": "http://jaspar.genereg.net/matrix/MA1628.1"
               }, {
                 "db": 0,
-                "idx": "4",
-                "id": "MA0521.3",
+                "idx": "7",
+                "id": "MA0521.1",
                 "alt": "Tcf12",
-                "url": "http://jaspar.genereg.net/matrix/MA0521.3"
+                "url": "http://jaspar.genereg.net/matrix/MA0521.1"
               }, {
                 "db": 0,
-                "idx": "6",
-                "id": "MA0633.3",
-                "alt": "Twist2",
-                "url": "http://jaspar.genereg.net/matrix/MA0633.3"
+                "idx": "15",
+                "id": "MA1100.2",
+                "alt": "ASCL1",
+                "url": "http://jaspar.genereg.net/matrix/MA1100.2"
               }, {
                 "db": 0,
-                "idx": "14",
-                "id": "MA1635.2",
-                "alt": "BHLHE22",
-                "url": "http://jaspar.genereg.net/matrix/MA1635.2"
+                "idx": "20",
+                "id": "MA1472.1",
+                "alt": "BHLHA15(var.2)",
+                "url": "http://jaspar.genereg.net/matrix/MA1472.1"
               }, {
                 "db": 0,
-                "idx": "18",
-                "id": "MA1993.2",
-                "alt": "Neurod2",
-                "url": "http://jaspar.genereg.net/matrix/MA1993.2"
-              }, {
-                "db": 0,
-                "idx": "19",
-                "id": "MA1997.2",
-                "alt": "Olig2",
-                "url": "http://jaspar.genereg.net/matrix/MA1997.2"
-              }, {
-                "db": 0,
-                "idx": "26",
-                "id": "MA2308.1",
-                "alt": "da",
-                "url": "http://jaspar.genereg.net/matrix/MA2308.1"
-              }, {
-                "db": 0,
-                "idx": "27",
-                "id": "MA2317.1",
-                "alt": "nau",
-                "url": "http://jaspar.genereg.net/matrix/MA2317.1"
-              }, {
-                "db": 0,
-                "idx": "28",
-                "id": "MA2321.1",
-                "alt": "tx",
-                "url": "http://jaspar.genereg.net/matrix/MA2321.1"
-              }, {
-                "db": 0,
-                "idx": "24",
-                "id": "MA2269.1",
-                "alt": "sc",
-                "url": "http://jaspar.genereg.net/matrix/MA2269.1"
-              }, {
-                "db": 0,
-                "idx": "12",
-                "id": "MA1467.3",
-                "alt": "Atoh1",
-                "url": "http://jaspar.genereg.net/matrix/MA1467.3"
-              }, {
-                "db": 0,
-                "idx": "16",
-                "id": "MA1642.2",
-                "alt": "NEUROG2",
-                "url": "http://jaspar.genereg.net/matrix/MA1642.2"
-              }, {
-                "db": 0,
-                "idx": "0",
-                "id": "MA0048.3",
-                "alt": "NHLH1",
-                "url": "http://jaspar.genereg.net/matrix/MA0048.3"
-              }, {
-                "db": 0,
-                "idx": "22",
-                "id": "MA2170.1",
-                "alt": "lin-32",
-                "url": "http://jaspar.genereg.net/matrix/MA2170.1"
-              }, {
-                "db": 0,
-                "idx": "9",
+                "idx": "11",
                 "id": "MA0816.1",
                 "alt": "Ascl2",
                 "url": "http://jaspar.genereg.net/matrix/MA0816.1"
+              }, {
+                "db": 0,
+                "idx": "0",
+                "id": "MA0048.2",
+                "alt": "NHLH1",
+                "url": "http://jaspar.genereg.net/matrix/MA0048.2"
+              }, {
+                "db": 0,
+                "idx": "31",
+                "id": "MA1642.1",
+                "alt": "NEUROG2(var.2)",
+                "url": "http://jaspar.genereg.net/matrix/MA1642.1"
+              }, {
+                "db": 0,
+                "idx": "18",
+                "id": "MA1109.1",
+                "alt": "NEUROD1",
+                "url": "http://jaspar.genereg.net/matrix/MA1109.1"
+              }, {
+                "db": 0,
+                "idx": "6",
+                "id": "MA0500.2",
+                "alt": "MYOG",
+                "url": "http://jaspar.genereg.net/matrix/MA0500.2"
+              }, {
+                "db": 0,
+                "idx": "3",
+                "id": "MA0103.3",
+                "alt": "ZEB1",
+                "url": "http://jaspar.genereg.net/matrix/MA0103.3"
+              }, {
+                "db": 0,
+                "idx": "8",
+                "id": "MA0607.1",
+                "alt": "Bhlha15",
+                "url": "http://jaspar.genereg.net/matrix/MA0607.1"
+              }, {
+                "db": 0,
+                "idx": "29",
+                "id": "MA1638.1",
+                "alt": "HAND2",
+                "url": "http://jaspar.genereg.net/matrix/MA1638.1"
+              }, {
+                "db": 0,
+                "idx": "23",
+                "id": "MA1529.1",
+                "alt": "NHLH2",
+                "url": "http://jaspar.genereg.net/matrix/MA1529.1"
+              }, {
+                "db": 0,
+                "idx": "26",
+                "id": "MA1629.1",
+                "alt": "Zic2",
+                "url": "http://jaspar.genereg.net/matrix/MA1629.1"
               }
             ]
           }, {
@@ -579,28 +608,16 @@
             "tomtom_matches": [
               {
                 "db": 0,
-                "idx": "20",
-                "id": "MA2107.1",
-                "alt": "cg",
-                "url": "http://jaspar.genereg.net/matrix/MA2107.1"
+                "idx": "16",
+                "id": "MA1107.2",
+                "alt": "KLF9",
+                "url": "http://jaspar.genereg.net/matrix/MA1107.2"
               }, {
                 "db": 0,
-                "idx": "5",
-                "id": "MA0538.2",
-                "alt": "daf-12",
-                "url": "http://jaspar.genereg.net/matrix/MA0538.2"
-              }, {
-                "db": 0,
-                "idx": "23",
-                "id": "MA2250.1",
-                "alt": "klu",
-                "url": "http://jaspar.genereg.net/matrix/MA2250.1"
-              }, {
-                "db": 0,
-                "idx": "2",
-                "id": "MA0359.3",
-                "alt": "RAP1",
-                "url": "http://jaspar.genereg.net/matrix/MA0359.3"
+                "idx": "1",
+                "id": "MA0073.1",
+                "alt": "RREB1",
+                "url": "http://jaspar.genereg.net/matrix/MA0073.1"
               }
             ],
             "fimo_gff": "fimo_out_2/fimo.gff"
@@ -631,52 +648,70 @@
             "tomtom_matches": [
               {
                 "db": 0,
-                "idx": "4",
-                "id": "MA1467.3",
-                "alt": "Atoh1",
-                "url": "http://jaspar.genereg.net/matrix/MA1467.3"
-              }, {
-                "db": 0,
-                "idx": "6",
-                "id": "MA1642.2",
-                "alt": "NEUROG2",
-                "url": "http://jaspar.genereg.net/matrix/MA1642.2"
-              }, {
-                "db": 0,
-                "idx": "3",
-                "id": "MA1109.2",
-                "alt": "NEUROD1",
-                "url": "http://jaspar.genereg.net/matrix/MA1109.2"
-              }, {
-                "db": 0,
-                "idx": "2",
-                "id": "MA0668.3",
-                "alt": "Neurod2",
-                "url": "http://jaspar.genereg.net/matrix/MA0668.3"
+                "idx": "11",
+                "id": "MA1642.1",
+                "alt": "NEUROG2(var.2)",
+                "url": "http://jaspar.genereg.net/matrix/MA1642.1"
               }, {
                 "db": 0,
                 "idx": "8",
-                "id": "MA2170.1",
-                "alt": "lin-32",
-                "url": "http://jaspar.genereg.net/matrix/MA2170.1"
+                "id": "MA1109.1",
+                "alt": "NEUROD1",
+                "url": "http://jaspar.genereg.net/matrix/MA1109.1"
+              }, {
+                "db": 0,
+                "idx": "10",
+                "id": "MA1638.1",
+                "alt": "HAND2",
+                "url": "http://jaspar.genereg.net/matrix/MA1638.1"
+              }, {
+                "db": 0,
+                "idx": "3",
+                "id": "MA0607.1",
+                "alt": "Bhlha15",
+                "url": "http://jaspar.genereg.net/matrix/MA0607.1"
+              }, {
+                "db": 0,
+                "idx": "6",
+                "id": "MA0818.1",
+                "alt": "BHLHE22",
+                "url": "http://jaspar.genereg.net/matrix/MA0818.1"
               }, {
                 "db": 0,
                 "idx": "7",
-                "id": "MA2163.1",
-                "alt": "cnd-1",
-                "url": "http://jaspar.genereg.net/matrix/MA2163.1"
-              }, {
-                "db": 0,
-                "idx": "5",
-                "id": "MA1638.2",
-                "alt": "HAND2",
-                "url": "http://jaspar.genereg.net/matrix/MA1638.2"
+                "id": "MA0827.1",
+                "alt": "OLIG3",
+                "url": "http://jaspar.genereg.net/matrix/MA0827.1"
               }, {
                 "db": 0,
                 "idx": "0",
-                "id": "MA0091.2",
+                "id": "MA0091.1",
                 "alt": "TAL1::TCF3",
-                "url": "http://jaspar.genereg.net/matrix/MA0091.2"
+                "url": "http://jaspar.genereg.net/matrix/MA0091.1"
+              }, {
+                "db": 0,
+                "idx": "4",
+                "id": "MA0668.1",
+                "alt": "NEUROD2",
+                "url": "http://jaspar.genereg.net/matrix/MA0668.1"
+              }, {
+                "db": 0,
+                "idx": "5",
+                "id": "MA0678.1",
+                "alt": "OLIG2",
+                "url": "http://jaspar.genereg.net/matrix/MA0678.1"
+              }, {
+                "db": 0,
+                "idx": "9",
+                "id": "MA1631.1",
+                "alt": "ASCL1(var.2)",
+                "url": "http://jaspar.genereg.net/matrix/MA1631.1"
+              }, {
+                "db": 0,
+                "idx": "1",
+                "id": "MA0461.2",
+                "alt": "Atoh1",
+                "url": "http://jaspar.genereg.net/matrix/MA0461.2"
               }
             ]
           }
@@ -5290,76 +5325,6 @@ function get_shared_doc_text(doc_type, extra, extra2) {
   if (extra == undefined) {extra = ""};
   if (extra2 == undefined) {extra2 = ""};
   switch (doc_type) {
-    case 'fasta-coordinates-name':
-      return(`
-        The sequence IDs in the FASTA header lines are used as the source of sequence names. 
-        The sequence ID is the string following the initial '>' up to the first white space character. 
-        If the sequence ID is in an accepted <a href="` + site_url + `/doc/fasta-coordinates-format.html">FASTA Coordinates Format</a>
-        (e.g., UCSC or Galaxy format), and you did NOT specify the <code>` + extra + `-no-pgc</code> option, 
-        then the coordinates are removed from the sequence ID to create the sequence name.
-      `);
-    case 'fasta-coordinates-brief':
-      return(`
-        The sequence IDs in the FASTA header lines are used as the source of sequence names. 
-        The sequence ID is the string following the initial '>' up to the first white space character. 
-        If the sequence ID is in an accepted <a href="` + site_url + `/doc/fasta-coordinates-format.html">FASTA Coordinates Format</a>
-        (e.g., UCSC or Galaxy format), and you did NOT specify the <code>` + extra + `-no-pgc</code> option, 
-        then the coordinates are removed from the sequence ID to create the sequence name,
-	and the starting coordinate given in the sequence ID will be used as the 
-        coordinate of the first position of the sequence. 
-        Otherwise, the coordinate of the first position of the sequence is taken as 1 and the entire
-	sequence ID is used as the sequence name. 
-      `);
-    case 'fasta-coordinates':
-      return(`
-	For sequence coordinates embedded in FASTA sequence headers to be parsed 
-        correctly by MEME Suite programs, the sequence ID in the FASTA header should have one of the two
-	following formats:
-
-	<h4>UCSC Format</h4>
-	<div style='margin: 5px 0'>
-	  &gt;<span class='pdat'>sequence name</span>:<span class='pdat'
-	  >starting position</span>-<span class='pdat'>ending position</span>
-	</div>
-	where
-	<ul style='margin-top: 0; margin-bottom: 5px'>
-	  <li><span class='pdat'>sequence name</span> is the name of the genomic sequence,</li>
-	  <li><span class='pdat'>starting position</span> is the genomic position of the first base and</li>
-	  <li><span class='pdat'>ending position</span> is the genomic position of the final base.</li>
-	</ul>
-        <b>Example:</b> <span class="pdata">chr1:156887119-156887619</span>
-
-	<h4>Galaxy Format</h4>
-	<div style='margin: 5px 0'>
-	  &gt;<span class='pdat'>assembly name</span>_<span class='pdat'
-	  >sequence name</span>_<span class='pdat'
-	  >starting position</span>_<span class='pdat'
-	  >ending position</span>_<span class='pdat'
-	  >strand</span>
-	</div>
-	where
-	<ul style='margin-top: 0; margin-bottom: 5px'>
-	  <li><span class='pdat'>assembly name</span> is the name of the genomic assembly,</li>
-	  <li><span class='pdat'>sequence name</span> is the name of the genomic sequence,</li>
-	  <li><span class='pdat'>starting position</span> is the genomic position of the first base and</li>
-	  <li><span class='pdat'>ending position</span> is the genomic position of the final base.</li>
-	</ul>
-        <b>Example:</b> <span class="pdata">>mm9_chr18_75759530_7575972_-</span>
-
-	<p>	
-	For both formats, the following rules also apply:
-        <ul>
-	  <li>The the coordinates are 1-start, fully-closed.  This means
-	  that the first base of the chromosome is position "1", and the bases at the
-	  first and last positions of the given range are included.</li>
-	  <li>The <span class='pdat'>sequence name</span> may not contain any white space.</li>
-	  <li>The <span class='pdat'>assembly name</span> is not optional.</li>
-	  <li>The <span class='pdat'>strand</span> is ignored.</li>
-	  <li>When no valid genomic coordinates are found in a FASTA sequence header, the starting
-	  position of the sequence is taken to be position 1.</li>
-        </ul>
-        </p>
-      `);
     case 'motif-db':
       return(`
 	The name of ` + extra2 + ` a file of motifs ("motif database file") that contains ` + extra + `
@@ -5435,10 +5400,20 @@ function get_shared_doc_text(doc_type, extra, extra2) {
       return(`
         The identifier of the sequence (from the FASTA sequence header line)` + extra + `
       `);
+    case 'sequence-name':
+      return(`
+	` + extra + `name of the sequence extracted from the sequence identifier (in the FASTA sequence header line).<br>
+	When you use the <code>--parse-genomic--coord</code> option, the sequence name ends at the
+	first colon ':' (if any) present in the sequence\'s FASTA identifier.  Typically this is the
+	chromosome or contig name.  With the <code>--parse-genomic--coord</code> option,
+	the start and stop positions are in 0-based coordinates relative to the sequence start given 
+	in the FASTA sequence identifier (just after the sequence name).</td> </tr>
+      `);
     case 'sequence-desc':
       return(`
         The description appearing after the identifier of the sequence in the FASTA header line.
       `);
+    case 'sequence-name':
     case 'alph-name':
       return(`
 	The name of the alphabet symbol.
@@ -5446,14 +5421,6 @@ function get_shared_doc_text(doc_type, extra, extra2) {
     case 'alph-bg':
       return(`
 	The frequency of the alphabet symbol as defined by the background model.
-      `);
-    case 'match-start':
-      return(`
-	The start position of the ` + extra + `.
-      `);
-    case 'match-stop':
-      return(`
-	The end position of the ` + extra + `.
       `);
     case 'match-start-seq':
       return(`
@@ -5470,6 +5437,12 @@ function get_shared_doc_text(doc_type, extra, extra2) {
     case 'match-stop-genomic':
       return(`
 	The end position of the ` + extra + `; genomic coordinates.
+      `);
+    case 'parse-genomic-coord':
+      return(`
+	` + extra + ` was run with the <code>--parse-genomic-coord</code> option
+	and has split the sequence identifier into sequence name, sequence start and sequence end 
+	in genomic coordinates.
       `);
     case 'motif-consensus':
       return(`
@@ -5789,7 +5762,6 @@ function make_clustered_motifs(container) {
       link.appendChild(document.createTextNode("CentriMo Group \u21B7"));
       link.href = centrimo_url(centrimo_list);
       group.appendChild(link);
-      group.append("\u2009");  // thin space
       group.appendChild(help_button("pop_centrimo_group"));
       motifbox.appendChild(group);
     }
@@ -6190,7 +6162,6 @@ function make_expand(target, nmotifs, grow_box, grow_table) {
   deactivator.grow_table = grow_table;
   deactivator.onclick = less_logos;
   control.appendChild(deactivator);
-  control.append("\u2009");		// thin space
   control.appendChild(help_button("pop_show_clustered"));
   return control;
 }
@@ -7180,7 +7151,7 @@ table.navigation * td
       <script>print_doc_para('pop_alph_bg', 'shared', 'alph-bg', 'The ');</script>
       <div class="pop_close">[<a href="javascript:help_popup()">close</a> ]</div>
     </div>
-    <div class="pop_content_wide" id="pop_summary">
+    <div class="pop_content" id="pop_summary">
       <script>print_doc("pop_summary", "meme-chip", "meme-chip-results-tsv");</script>
       <script>print_doc("pop_summary", 'shared', "motif-consensus");</script>
       <div style="float:right; bottom:0px;">[ 

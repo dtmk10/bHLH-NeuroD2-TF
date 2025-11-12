@@ -54,6 +54,6 @@ meme.xml	TGTGTGTGTGTGTGT	MEME-3	TGTGTGTGTGTGTGT	streme.xml	1-CCATCTGBTYY	STREME-
 meme.xml	TGTGTGTGTGTGTGT	MEME-3	TGTGTGTGTGTGTGT	streme.xml	3-CACTGTAGGACCT	STREME-3	CACTGTAGGACCT	0	0	.	.	.	6.99e+00	32	3	1	3	5.27e-01	9.99e-01
 meme.xml	TGTGTGTGTGTGTGT	MEME-3	TGTGTGTGTGTGTGT	streme.xml	2-GGAAAATGAGAA	STREME-2	GGAAAATGAGAA	0	0	.	.	.	7.00e+00	1	3	1	10	9.16e-01	1.00e+00
 
-# SpaMo (Spaced Motif Analysis Tool): Version 5.5.8 compiled on May 19 2025 at 00:20:36
+# SpaMo (Spaced Motif Analysis Tool): Version 5.5.2 compiled on Apr 18 2023 at 05:47:05
 # The format of this file is described at https://meme-suite.org/meme/doc/spamo-output-format.html.
 # spamo -verbosity 1 -oc IP_meme/spamo_out_1 -bgfile IP_meme/background -keepprimary -primary TGTGTGTGTGTGTGT IP_meme/IP_peaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml

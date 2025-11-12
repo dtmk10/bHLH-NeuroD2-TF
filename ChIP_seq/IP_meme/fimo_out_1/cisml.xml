@@ -74,7 +74,7 @@ clusterid CDATA #IMPLIED
 >
 <program-name>fimo</program-name>
 <parameters>
-<command-line>fimo --verbosity 1 --oc IP_meme/fimo_out_1 --bgfile IP_meme/background --motif VDRVCAGATGG IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa</command-line>
+<command-line>fimo --parse-genomic-coord --verbosity 1 --oc IP_meme/fimo_out_1 --bgfile IP_meme/background --motif VDRVCAGATGG IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa</command-line>
 <pattern-file>IP_meme/meme_out/meme.xml</pattern-file>
 <sequence-file>IP_meme/IP_peaks.resized.bed.fa</sequence-file>
 <site-pvalue-cutoff>0.0001</site-pvalue-cutoff>

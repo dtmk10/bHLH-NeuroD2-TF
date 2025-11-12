@@ -1,7 +1,1 @@
-The given ghostscript "/home/diego/miniconda3/envs/chip-seq/bin/gs" is not an executable file.
-Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
-Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
-Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
-Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
-Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
-Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+[diego-HP-Laptop-14s-dq2xxx:21093] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)

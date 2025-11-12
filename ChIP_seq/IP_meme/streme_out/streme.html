@@ -7,12 +7,12 @@
       // @JSON_VAR data
       var data = {
         "program": "streme",
-        "version": "5.5.8",
-        "release": "Thu May 15 15:01:46 2025 -0700",
+        "version": "5.5.2",
+        "release": "Sun Jan 29 10:33:12 2023 -0800",
         "cmd": [
           "streme", "--verbosity", "1", "--oc", "IP_meme/streme_out", "-dna",
-          "--seed", "0", "--p", "IP_meme/seqs-centered", "--minw", "6",
-          "--maxw", "15", "--order", "2"
+          "--p", "IP_meme/seqs-centered", "--minw", "6", "--maxw", "15",
+          "--order", "2"
         ],
         "options": {
           "strands": "both",
@@ -27,7 +27,6 @@
           "niter": 20,
           "patience": 3,
           "seed": 0,
-          "notrim": false,
           "useer": false,
           "minscore": 0,
           "ignore_depth": 5,
@@ -153,7 +152,6 @@
             "initial_width": 10,
             "seed": "CCATCTGCTCC",
             "score_threshold": 7.84657,
-            "npassing": 494,
             "train_pos_count": 440,
             "train_neg_count": 99,
             "train_log_pvalue": -75.5213,
@@ -169,16 +167,16 @@
             "test_dtc": -1.0,
             "test_bernoulli": -1,
             "elapsed_time": 1.1,
-            "total_sites": 440,
+            "total_sites": 439,
             "site_distr": [
               2, 4, 3, 4, 5, 3, 2, 2, 4, 2, 1, 5, 5, 4, 9, 2, 8, 5, 6, 6, 2,
               4, 8, 3, 6, 7, 5, 7, 6, 6, 6, 3, 4, 5, 6, 5, 4, 10, 3, 6, 3, 2,
               5, 1, 3, 6, 5, 6, 3, 3, 6, 3, 8, 5, 5, 11, 5, 5, 11, 8, 2, 4, 5,
-              1, 3, 4, 3, 2, 4, 7, 3, 4, 3, 4, 10, 3, 4, 3, 5, 4, 8, 0, 5, 5,
+              1, 3, 4, 3, 2, 4, 7, 3, 4, 3, 4, 9, 3, 4, 3, 5, 4, 8, 0, 5, 5,
               7, 5, 4, 3, 4, 2
             ],
             "max_sites": 6,
-            "site_hist": [0, 288, 108, 31, 9, 3, 1],
+            "site_hist": [0, 287, 108, 31, 9, 3, 1],
             "len": 11,
             "nsites": 494,
             "evalue": "0",
@@ -203,7 +201,6 @@
             "initial_width": 12,
             "seed": "GGAAAATGAGAA",
             "score_threshold": 13.6505,
-            "npassing": 43,
             "train_pos_count": 41,
             "train_neg_count": 0,
             "train_log_pvalue": -12.5674,
@@ -254,7 +251,6 @@
             "initial_width": 8,
             "seed": "CACTGTAGGACCT",
             "score_threshold": 13.0819,
-            "npassing": 39,
             "train_pos_count": 37,
             "train_neg_count": 0,
             "train_log_pvalue": -11.3206,
@@ -269,7 +265,7 @@
             "test_evalue": "9.9e-001",
             "test_dtc": -1.0,
             "test_bernoulli": -1,
-            "elapsed_time": 3.4,
+            "elapsed_time": 3.5,
             "total_sites": 37,
             "site_distr": [
               0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1,
@@ -306,7 +302,6 @@
             "initial_width": 9,
             "seed": "CTTGCCATA",
             "score_threshold": 10.1266,
-            "npassing": 57,
             "train_pos_count": 55,
             "train_neg_count": 4,
             "train_log_pvalue": -12.4263,
@@ -321,7 +316,7 @@
             "test_evalue": "3.3e+000",
             "test_dtc": -1.0,
             "test_bernoulli": -1,
-            "elapsed_time": 2.6,
+            "elapsed_time": 2.7,
             "total_sites": 55,
             "site_distr": [
               0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2, 1, 2, 0, 1, 2, 2, 0, 0, 1, 1,
@@ -350,8 +345,8 @@
         ],
         "stop_reason": "Stopped because 3 consecutive motifs exceeded the p-value threshold (0.05).",
         "runtime": {
-          "host": "pkrvm1036rseh6a",
-          "cpu": 3.42
+          "host": "fv-az497-198",
+          "cpu": 3.59
         }
       };
     </script>
@@ -4663,8 +4658,7 @@ function make_motif_row(tbody, ordinal, motif) {
   } else {
     add_text_cell(row, motif["train_pvalue"], "motif_score");
   }
-  // npassing added in 5.5.3
-  var tp = motif["npassing"] > 0 ? motif["npassing"] : motif["train_pos_count"] + motif["test_pos_count"];
+  var tp = motif["train_pos_count"] + motif["test_pos_count"];
   var tp_percent = (100 * tp / (data["train_positives"]["count"] + data["test_positives"]["count"])).toFixed(1);
   add_text_cell(row, tp + " (" + tp_percent + "%)", "motif_sites");
   add_cell(row, make_sym_btn(text_pair("\u21A7", "less", "\u21A5", "more"), "Show more information.", function(e) { toggle_class(tbody, "collapsed"); }, "\u21A5", ""), "motif_more");
@@ -5065,76 +5059,6 @@ function get_shared_doc_text(doc_type, extra, extra2) {
   if (extra == undefined) {extra = ""};
   if (extra2 == undefined) {extra2 = ""};
   switch (doc_type) {
-    case 'fasta-coordinates-name':
-      return(`
-        The sequence IDs in the FASTA header lines are used as the source of sequence names. 
-        The sequence ID is the string following the initial '>' up to the first white space character. 
-        If the sequence ID is in an accepted <a href="` + site_url + `/doc/fasta-coordinates-format.html">FASTA Coordinates Format</a>
-        (e.g., UCSC or Galaxy format), and you did NOT specify the <code>` + extra + `-no-pgc</code> option, 
-        then the coordinates are removed from the sequence ID to create the sequence name.
-      `);
-    case 'fasta-coordinates-brief':
-      return(`
-        The sequence IDs in the FASTA header lines are used as the source of sequence names. 
-        The sequence ID is the string following the initial '>' up to the first white space character. 
-        If the sequence ID is in an accepted <a href="` + site_url + `/doc/fasta-coordinates-format.html">FASTA Coordinates Format</a>
-        (e.g., UCSC or Galaxy format), and you did NOT specify the <code>` + extra + `-no-pgc</code> option, 
-        then the coordinates are removed from the sequence ID to create the sequence name,
-	and the starting coordinate given in the sequence ID will be used as the 
-        coordinate of the first position of the sequence. 
-        Otherwise, the coordinate of the first position of the sequence is taken as 1 and the entire
-	sequence ID is used as the sequence name. 
-      `);
-    case 'fasta-coordinates':
-      return(`
-	For sequence coordinates embedded in FASTA sequence headers to be parsed 
-        correctly by MEME Suite programs, the sequence ID in the FASTA header should have one of the two
-	following formats:
-
-	<h4>UCSC Format</h4>
-	<div style='margin: 5px 0'>
-	  &gt;<span class='pdat'>sequence name</span>:<span class='pdat'
-	  >starting position</span>-<span class='pdat'>ending position</span>
-	</div>
-	where
-	<ul style='margin-top: 0; margin-bottom: 5px'>
-	  <li><span class='pdat'>sequence name</span> is the name of the genomic sequence,</li>
-	  <li><span class='pdat'>starting position</span> is the genomic position of the first base and</li>
-	  <li><span class='pdat'>ending position</span> is the genomic position of the final base.</li>
-	</ul>
-        <b>Example:</b> <span class="pdata">chr1:156887119-156887619</span>
-
-	<h4>Galaxy Format</h4>
-	<div style='margin: 5px 0'>
-	  &gt;<span class='pdat'>assembly name</span>_<span class='pdat'
-	  >sequence name</span>_<span class='pdat'
-	  >starting position</span>_<span class='pdat'
-	  >ending position</span>_<span class='pdat'
-	  >strand</span>
-	</div>
-	where
-	<ul style='margin-top: 0; margin-bottom: 5px'>
-	  <li><span class='pdat'>assembly name</span> is the name of the genomic assembly,</li>
-	  <li><span class='pdat'>sequence name</span> is the name of the genomic sequence,</li>
-	  <li><span class='pdat'>starting position</span> is the genomic position of the first base and</li>
-	  <li><span class='pdat'>ending position</span> is the genomic position of the final base.</li>
-	</ul>
-        <b>Example:</b> <span class="pdata">>mm9_chr18_75759530_7575972_-</span>
-
-	<p>	
-	For both formats, the following rules also apply:
-        <ul>
-	  <li>The the coordinates are 1-start, fully-closed.  This means
-	  that the first base of the chromosome is position "1", and the bases at the
-	  first and last positions of the given range are included.</li>
-	  <li>The <span class='pdat'>sequence name</span> may not contain any white space.</li>
-	  <li>The <span class='pdat'>assembly name</span> is not optional.</li>
-	  <li>The <span class='pdat'>strand</span> is ignored.</li>
-	  <li>When no valid genomic coordinates are found in a FASTA sequence header, the starting
-	  position of the sequence is taken to be position 1.</li>
-        </ul>
-        </p>
-      `);
     case 'motif-db':
       return(`
 	The name of ` + extra2 + ` a file of motifs ("motif database file") that contains ` + extra + `
@@ -5210,10 +5134,20 @@ function get_shared_doc_text(doc_type, extra, extra2) {
       return(`
         The identifier of the sequence (from the FASTA sequence header line)` + extra + `
       `);
+    case 'sequence-name':
+      return(`
+	` + extra + `name of the sequence extracted from the sequence identifier (in the FASTA sequence header line).<br>
+	When you use the <code>--parse-genomic--coord</code> option, the sequence name ends at the
+	first colon ':' (if any) present in the sequence\'s FASTA identifier.  Typically this is the
+	chromosome or contig name.  With the <code>--parse-genomic--coord</code> option,
+	the start and stop positions are in 0-based coordinates relative to the sequence start given 
+	in the FASTA sequence identifier (just after the sequence name).</td> </tr>
+      `);
     case 'sequence-desc':
       return(`
         The description appearing after the identifier of the sequence in the FASTA header line.
       `);
+    case 'sequence-name':
     case 'alph-name':
       return(`
 	The name of the alphabet symbol.
@@ -5221,14 +5155,6 @@ function get_shared_doc_text(doc_type, extra, extra2) {
     case 'alph-bg':
       return(`
 	The frequency of the alphabet symbol as defined by the background model.
-      `);
-    case 'match-start':
-      return(`
-	The start position of the ` + extra + `.
-      `);
-    case 'match-stop':
-      return(`
-	The end position of the ` + extra + `.
       `);
     case 'match-start-seq':
       return(`
@@ -5245,6 +5171,12 @@ function get_shared_doc_text(doc_type, extra, extra2) {
     case 'match-stop-genomic':
       return(`
 	The end position of the ` + extra + `; genomic coordinates.
+      `);
+    case 'parse-genomic-coord':
+      return(`
+	` + extra + ` was run with the <code>--parse-genomic-coord</code> option
+	and has split the sequence identifier into sequence name, sequence start and sequence end 
+	in genomic coordinates.
       `);
     case 'motif-consensus':
       return(`
@@ -5347,40 +5279,10 @@ function get_streme_doc_text(doc_type, extra) {
           <tr> <td>2</td> <td>motif_ALT_ID</td> <td>` + get_doc_text('streme', 'streme-motif-alt-id') + `</td> </tr>
           <tr> <td rowspan=2>3</td> <td>motif_P-value</td> <td>` + get_doc_text('streme', 'streme-pvalue') + `</td> </tr>
           <tr>                      <td>motif_Score</td> <td>` + get_doc_text('streme', 'streme-score') + `</td> </tr>
-          <tr> <td>4</td> <td>seq_ID</td> <td>The name of the sequence.
-            ` + get_doc_text('shared', 'fasta-coordinates-name', '-') +
-            `</td> </tr>
+          <tr> <td>4</td> <td>seq_ID</td> <td>The ID of the sequence.</td> </tr>
           <tr> <td>5</td> <td>seq_Score</td> <td>` + get_doc_text('shared', 'motif-match-score', "", "The seq_Score of a sequence is its maximum motif match score over all sequence positions.") + `</td> </tr>
           <tr> <td>5</td> <td>seq_Class</td> <td>Whether the sequence is a true positive, 'tp', or a false positive, 'fp'.</td> </tr>
           <tr> <td>6</td> <td>is_holdout?</td> <td>Whether the sequence was in the holdout set, '1', or not, '0'.</td> </tr>
-        </table>
-      `);
-    case 'streme-sites-tsv':
-      return(`
-        <p>STREME outputs a tab-separated values (TSV) file ('sites.tsv') containing one line for
-        each primary sequence site whose score passes the motif's match threshold for each motif discovered by STREME.
-        The lines are grouped by motif, and groups are separated by a line
-        starting with the character "#".
-        The first line in the file contains the (tab-separated) names of the fields.
-        The names and meanings of each of the fields are described in the table below.
-        </p>
-        <table class="dark" style="width:100%" border=1>
-          <tr> <th>field</th> <th>name</th>       <th>contents</th> </tr>
-          <tr> <td>1</td> <td>motif_ID</td>       <td>` + get_doc_text('streme', 'streme-motif-id') + `</td> </tr>
-          <tr> <td>2</td> <td>motif_ALT_ID</td>   <td>` + get_doc_text('streme', 'streme-motif-alt-id') + `</td> </tr>
-          <tr> <td>3</td> <td>seq_ID</td> <td>The name of the sequence.
-            ` + get_doc_text('shared', 'fasta-coordinates-brief', '-') +
-            `</td> </tr>
-          <tr> <td>4</td> <td>site_Start</td>     <td>The starting position of the site in the input sequence (even if the site is on the
-						      reverse complement strand of the input sequence).</td> </tr>
-          <tr> <td>5</td> <td>site_End</td>       <td>The ending position of the site in the sequence.</td> </tr>
-          <tr> <td>6</td> <td>site_Strand</td>    <td>The strand (+/-) of the sequence containing the site 
-						      (or '.' if the alphabet is single-stranded).
-                                                      The value '+' means the input sequence, '-' means its reverse-complement.</td> </tr>
-          <tr> <td>7</td> <td>site_Score</td>     <td>The score of the site is the log of the ratio of the probability of the site
-						      given the motif position-specific frequency matrix over the probability
-						      of the site given the background Markov model.</td></tr>
-          <tr> <td>8</td> <td>site_Sequence</td>  <td>The sequence of the site on the matching strand.</td> </tr>
         </table>
       `);
     default:
@@ -5690,14 +5592,14 @@ function action_show_outpop(e, ordinal) {
     // setup program selection
     tbl_submit = $("programs");
     // when not dna, hide the inputs for programs that require dna motifs
-    toggle_class(tbl_submit, "alphabet_dna", current_alphabet.has_complement());//TODO alphabet_dna is a bad name for a field when allowing custom alphabets
+    toggle_class(tbl_submit, "alphabet_dna", current_alphabet.has_complement());//TODO FIXME alphabet_dna is a bad name for a field when allowing custom alphabets
     // add a click listener for the radio buttons
     inputs = tbl_submit.querySelectorAll("input[type='radio']");
     for (i = 0; i < inputs.length; i++) {
       inputs[i].addEventListener("click", action_outpop_program, false);
     }
     // ensure that a default program option is selected for DNA and Protein
-    default_prog = document.getElementById(current_alphabet.has_complement() ? "submit_tomtom" : "submit_fimo"); //TODO Tomtom might require a more strict definition of DNA
+    default_prog = document.getElementById(current_alphabet.has_complement() ? "submit_tomtom" : "submit_fimo"); //TODO FIXME Tomtom might require a more strict definition of DNA
     default_prog.checked = true;
     action_outpop_program.call(default_prog);
     // disable reverse-complement when not DNA
@@ -5815,13 +5717,6 @@ function action_outpop_submit(e) {
   input.setAttribute("type", "hidden");
   input.setAttribute("name", "motifs_embed");
   input.setAttribute("value", motifs);
-  form.appendChild(input);
-
-  var current_file = location.pathname.substring(location.pathname.lastIndexOf('/')+1);
-  input = document.createElement("input");
-  input.setAttribute("type", "hidden");
-  input.setAttribute("name", "motifs_name");
-  input.setAttribute("value", "motif number " + (current_motif+1) + " from " + current_file);
   form.appendChild(input);
 
   document.body.appendChild(form);
@@ -8153,23 +8048,16 @@ tbody.collapsed *.less {
       <div style="float:right; bottom:0px;">[
         <a href="javascript:help_popup()">close</a> ]</div>
     </div>
-
     <div class="pop_content" id="pop_results_xml">
       <p>STREME results in XML format.</p>
       <div style="float:right; bottom:0px;">[
         <a href="javascript:help_popup()">close</a> ]</div>
     </div>
-    <div class="pop_content_wide" id="pop_sequences">
+    <div class="pop_content" id="pop_sequences">
       <script>print_doc("pop_sequences", "streme", "streme-sequences-tsv");</script>
       <div style="float:right; bottom:0px;">[
         <a href="javascript:help_popup()">close</a> ]</div>
     </div>
-    <div class="pop_content_wide" id="pop_sites">
-      <script>print_doc("pop_sites", "streme", "streme-sites-tsv");</script>
-      <div style="float:right; bottom:0px;">[
-        <a href="javascript:help_popup()">close</a> ]</div>
-    </div>
-
     <div class="pop_content" id="pop_motifs_word">
       <script> print_doc_para("pop_motifs_word", "streme", "streme-motif-id"); </script>
       <p>
@@ -8442,16 +8330,13 @@ tbody.collapsed *.less {
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <a class="jump" href="streme.txt">Motifs in MEME Text Format</a>&nbsp;<span id="results_txt_help"></span>
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a class="jump" href="sequences.tsv">Matching Sequences</a>&nbsp;<span id="sequences_help"></span>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a class="jump" href="sites.tsv">Matching Sites</a>&nbsp;<span id="sites_help"></span>
+      <a class="jump" href="sequences.tsv">Matching Sequences</a>&nbsp;<span id="sequences_help"></span>>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <a class="jump" href="streme.xml">Results in XML Format</a>&nbsp;<span id="results_xml_help"></span>
       <script>
         make_help_button($("results_txt_help"), "pop_results_txt");
         make_help_button($("results_xml_help"), "pop_results_xml");
         make_help_button($("sequences_help"), "pop_sequences");
-        make_help_button($("sites_help"), "pop_sites");
       </script>
     </div>
     <!-- alert the user when their browser is not up to the task -->
@@ -8557,7 +8442,6 @@ tbody.collapsed *.less {
         <tr class="experimental"><th>Maximum Palindrome Edit Distance</th><td id="opt_max_pal_ed"></td></tr>
         <tr class="experimental"><th>Print Candidate Motifs?</th><td id="opt_cand"></td></tr>
         <tr><th>Random Number Seed</th><td id="opt_seed"></td></tr>
-        <tr><th>Trimming of Control Sequences</th><td id="opt_notrim"></td></tr>
         <tr><th>Total Length</th><td id="opt_totallength"></td></tr>
         <tr><th>Maximum Motif <span id="opt_thresh_type"></span></th><td id="opt_stop_sig"></td></tr>
         <tr><th>Maximum Motifs to Find</th><td id="opt_stop_nmotifs"></td></tr>
@@ -8601,7 +8485,6 @@ tbody.collapsed *.less {
         $("opt_max_pal_ed").innerHTML = data.options.max_pal_ed;
         $("opt_cand").innerHTML = data.options.cand ? "Yes.  Candidate motifs are printed to TEXT output only." : "No."
         $("opt_seed").innerHTML = data.options.seed;
-        $("opt_notrim").innerHTML = data.options.notrim ? "Trimming of control sequences was NOT allowed." : "Trimming of control sequences was allowed.";
         $("opt_totallength").innerHTML = (data.options.totallength == 0) ? 
           "The total length of the sequence set(s) was not limited." : 
           "The total length of each sequence set was limited to " + data.options.totallength.toPrecision(3) + ".";

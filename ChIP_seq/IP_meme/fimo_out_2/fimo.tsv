@@ -2411,6 +2411,6 @@ TGTGTGTGTGTGTGT	MEME-3	chr12	79408537	79408551	-	1.1	9.93e-05	0.0314	TGTCTGTCAAT
 TGTGTGTGTGTGTGT	MEME-3	chr12	79408549	79408563	-	1.1	9.93e-05	0.0314	TGTCTGTCAATATGT
 TGTGTGTGTGTGTGT	MEME-3	chr12	79408561	79408575	-	1.1	9.93e-05	0.0314	TGTCTGTCAATATGT
 
-# FIMO (Find Individual Motif Occurrences): Version 5.5.8 compiled on May 19 2025 at 00:20:33
-# The format of this file is described at https://meme-suite.org/meme/doc/fimo-output-format.html#tsv_results.
-# fimo --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa
+# FIMO (Find Individual Motif Occurrences): Version 5.5.2 compiled on Apr 18 2023 at 05:46:54
+# The format of this file is described at https://meme-suite.org/meme/doc/fimo-output-format.html.
+# fimo --parse-genomic-coord --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa

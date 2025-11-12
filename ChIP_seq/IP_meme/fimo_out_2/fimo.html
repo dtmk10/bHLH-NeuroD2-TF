@@ -19,16 +19,6 @@ td.right {text-align: right; padding-right: 1cm;}
 <td bgcolor="#DDDDFF"><a href="#debugging_information"><b>Debugging Information</b></a></td>
 <td bgcolor="#FFDD00"><a href="fimo.tsv""><b>Results in TSV Format</b></a></td>
 <td bgcolor="#FFDDFF"><a href="fimo.gff""><b>Results in GFF3 Format</b></a></td>
-<td bgcolor="#00FFFF" id="best_site"><a href="best_site.narrowPeak""><b>Best Site per Sequence</b></a></td>
-<script>
-var new_icon_src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAQCAMAAAAyEe/dAAAACVBMVEX//wAAAAD////s2cV/AAAAdUlEQVQYlXVRBxLAIAhL+P+jC2HZhXcBZEWEldDsZcLIcAhHWWnK8SDcWQhMFUHdAQ1CqQ5+CWPmlHojl+nCJNRtzu4qRc3IUzmTVpXYK0nox0z0PI1stgchdK7lEv7ekhvalw8WW547Gyzedt/2/gLx8WXjXF/1AYFriNAWAAAAAElFTkSuQmCC";
-var new_icon = document.createElement("img");
-new_icon.src = new_icon_src;
-new_icon.alt = "NEW";
-const elem = document.getElementById("best_site");
-elem.appendChild(document.createTextNode("  "));
-elem.appendChild(new_icon);
-</script>
 </tr>
 </table>
 <br/>
@@ -37,7 +27,7 @@ elem.appendChild(new_icon);
 <center><big><b>FIMO - Motif search tool</b></big></center>
 <hr>
 <p>
-FIMO version 5.5.8, (Release date: Thu May 15 15:01:46 2025 -0700)
+FIMO version 5.5.2, (Release date: Sun Jan 29 10:33:12 2023 -0800)
 </p>
 <p>
 For further information on how to interpret these results please access <a href="https://meme-suite.org/meme/doc/fimo-output-format.html">https://meme-suite.org/meme/doc/fimo-output-format.html</a>.<br>
@@ -11155,7 +11145,7 @@ false discovery rate if the occurrence is accepted as significant.
 Command line:
 </p>
 <pre>
-fimo --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa
+fimo --parse-genomic-coord --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa
 </pre>
 <p>
 Settings:

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Begin document body -->
-<fimo version="5.5.8" release="Thu May 15 15:01:46 2025 -0700">
+<fimo version="5.5.2" release="Sun Jan 29 10:33:12 2023 -0800">
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation=  xmlns:fimo="http://noble.gs.washington.edu/schema/fimo"
 >
-<command-line>fimo --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa</command-line>
+<command-line>fimo --parse-genomic-coord --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa</command-line>
 <settings>
 <setting name="output directory">IP_meme/fimo_out_2</setting>
 <setting name="MEME file name">IP_meme/meme_out/meme.xml</setting>

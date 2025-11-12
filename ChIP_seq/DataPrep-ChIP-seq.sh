@@ -33,3 +33,5 @@ samtools index Peaks_SRR3955796.bam
 cd ..
 mkdir PeakCalling
 macs2 callpeak -g mm -f BAM -t mapped_reads/Peaks_SRR3955796.bam -c mapped_reads/Input_SRR3955800.bam --bw 200 --outdir PeakCalling/ -n Neuro_D2
+
+meme-chip -oc IP_meme --db JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt IP_peaks.resized.bed.fa

@@ -1567,6 +1567,6 @@ VDRVCAGATGG	MEME-1	chr1	35138146	35138156	-	10.9394	9.98e-05	0.0495	AGGGCAGCAGG
 VDRVCAGATGG	MEME-1	chr12	72285867	72285877	+	10.9394	9.98e-05	0.0495	AGGGCAGCAGG
 VDRVCAGATGG	MEME-1	chr10	74933880	74933890	-	10.9394	9.98e-05	0.0495	GGCACAGAAGG
 
-# FIMO (Find Individual Motif Occurrences): Version 5.5.8 compiled on May 19 2025 at 00:20:33
-# The format of this file is described at https://meme-suite.org/meme/doc/fimo-output-format.html#tsv_results.
-# fimo --verbosity 1 --oc IP_meme/fimo_out_1 --bgfile IP_meme/background --motif VDRVCAGATGG IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa
+# FIMO (Find Individual Motif Occurrences): Version 5.5.2 compiled on Apr 18 2023 at 05:46:54
+# The format of this file is described at https://meme-suite.org/meme/doc/fimo-output-format.html.
+# fimo --parse-genomic-coord --verbosity 1 --oc IP_meme/fimo_out_1 --bgfile IP_meme/background --motif VDRVCAGATGG IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa

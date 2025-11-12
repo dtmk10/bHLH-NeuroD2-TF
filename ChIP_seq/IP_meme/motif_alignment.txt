@@ -10,6 +10,6 @@ Query_ID	Target_ID	Optimal_offset	p-value	E-value	q-value	Overlap	Query_consensu
 4	1	0	3.93308e-11	1.57323e-10	1.57323e-10	11	CCATCTGCTCC	CCATCTGCTCC	-
 4	2	0	0.00011984	0.000479359	0.000319572	8	CCATCTGCTCC	CCAGCTGC	+
 
-# Tomtom (Motif Comparison Tool): Version 5.5.8 compiled on May 19 2025 at 00:20:37
+# Tomtom (Motif Comparison Tool): Version 5.5.2 compiled on Apr 18 2023 at 05:47:07
 # The format of this file is described at https://meme-suite.org/meme/doc/tomtom-output-format.html.
 # tomtom -verbosity 1 -text -thresh 0.1 IP_meme/combined.meme IP_meme/combined.meme
