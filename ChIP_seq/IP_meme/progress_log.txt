@@ -1,0 +1,62 @@
+Invoking:
+  getsize IP_meme/IP_peaks.resized.bed.fa 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.008521
+Invoking:
+  fasta-most -min 50 < IP_meme/IP_peaks.resized.bed.fa 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.035274
+Invoking:
+  fasta-center -dna -len 100 < IP_meme/IP_peaks.resized.bed.fa 1> IP_meme/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.043557
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 IP_meme/IP_peaks.resized.bed.fa IP_meme/background
+Finished invoke:
+  name: bg  status: 0  time: 0.007702
+Invoking:
+  meme IP_meme/seqs-centered -oc IP_meme/meme_out -mod zoops -nmotifs 3 -minw 6 -maxw 15 -bfile IP_meme/background -dna -seed 0 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 481.597314
+Invoking:
+  streme --verbosity 1 --oc IP_meme/streme_out -dna --seed 0 --p IP_meme/seqs-centered --minw 6 --maxw 15 --order 2
+Finished invoke:
+  name: streme  status: 0  time: 3.531947
+Invoking:
+  centrimo -seqlen 450 -verbosity 1 -oc IP_meme/centrimo_out -bfile IP_meme/background IP_meme/IP_peaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt
+Finished invoke:
+  name: centrimo  status: 256  time: 0.403649
+Invoking:
+  tomtom -verbosity 1 -oc IP_meme/meme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc IP_meme/meme_out/meme.xml JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt
+Finished invoke:
+  name: meme_tomtom  status: 0  time: 4.13524
+Invoking:
+  tomtom -verbosity 1 -oc IP_meme/streme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc IP_meme/streme_out/streme.xml JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt
+Finished invoke:
+  name: streme_tomtom  status: 0  time: 4.382979
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 IP_meme/combined.meme IP_meme/combined.meme 1> IP_meme/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.020761
+Invoking:
+  spamo -verbosity 1 -oc IP_meme/spamo_out_1 -bgfile IP_meme/background -keepprimary -primary VDRVCAGATGG IP_meme/IP_peaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.857472
+Invoking:
+  spamo -verbosity 1 -oc IP_meme/spamo_out_1 -bgfile IP_meme/background -keepprimary -primary TGTGTGTGTGTGTGT IP_meme/IP_peaks.resized.bed.fa IP_meme/meme_out/meme.xml IP_meme/meme_out/meme.xml IP_meme/streme_out/streme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.348029
+Invoking:
+  fimo --verbosity 1 --oc IP_meme/fimo_out_1 --bgfile IP_meme/background --motif VDRVCAGATGG IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa
+Finished invoke:
+  name: fimo1  status: 0  time: 0.212848
+Invoking:
+  fimo --verbosity 1 --oc IP_meme/fimo_out_2 --bgfile IP_meme/background --motif TGTGTGTGTGTGTGT IP_meme/meme_out/meme.xml IP_meme/IP_peaks.resized.bed.fa
+Finished invoke:
+  name: fimo2  status: 0  time: 0.217703
+Writing output
+Invoking:
+  meme-chip_html_to_tsv IP_meme/meme-chip.html IP_meme/summary.tsv "meme-chip -oc IP_meme --db JASPAR_db/JASPAR2024_CORE_non-redundant_pfms_meme.txt IP_peaks.resized.bed.fa" 5.5.8 "Thu May 15 15\:01\:46 2025 -0700"
+Finished invoke:
+  name: summary  status: 0  time: 0.063218
+Done
